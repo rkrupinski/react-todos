@@ -1,0 +1,26 @@
+{
+  "root": true,
+  "ecmaFeatures": {
+    "arrowFunctions": true,
+    "blockBindings": true,
+    "classes": true,
+    "defaultParams": true,
+    "destructuring": true,
+    "forOf": true,
+    "jsx": true,
+    "modules": true,
+    "objectLiteralShorthandProperties": true,
+    "objectLiteralShorthandMethods": true,
+    "restParams": true,
+    "spread": true,
+    "templateStrings": true
+  },
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "no-undef": 2,
+    "semi": 2,
+    "strict": 2
+  }
+}
