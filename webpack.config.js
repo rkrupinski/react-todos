@@ -1,5 +1,4 @@
 var path = require('path');
-var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var Clean = require('clean-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -74,11 +73,6 @@ module.exports = {
   },
   plugins: [
     new Clean([dir_build]),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    }),
     new HtmlWebpackPlugin({
       title: 'Todos',
       template: path.resolve(dir_html, 'index.html'),
