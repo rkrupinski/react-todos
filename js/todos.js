@@ -1,23 +1,17 @@
 import React from 'react';
 
 import TodoForm from './todoForm';
-import Todo from './todo';
-import ClearBtn from './clearBtn';
+import TodoList from './todoList';
+import TodoToolbar from './todoToolbar';
 
-export default class Todos extends React.Component {
-  render() {
-    const todos = this.props.todos.map(todo => 
-        <Todo data={todo} key={todo.get('id')} />);
+export default function Todos(props) {
+  const { todos, view } = props;
 
-    return (
-      <div>
-        <h1>Todos</h1>
-        <TodoForm />
-        <ul className="todos">
-          {todos.size ? todos : <li>Hooray, no todos!</li>}
-        </ul>
-        <ClearBtn todos={this.props.todos} />
-      </div>
-    );
-  }
-};
+  return (
+    <div>
+      <TodoForm />
+      <TodoList todos={todos} view={view} />
+      <TodoToolbar todos={todos} />
+    </div>
+  );
+}

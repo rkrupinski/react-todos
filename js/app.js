@@ -1,21 +1,37 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { Router, Route, IndexRoute } from 'react-router';
 
-import AppComponent from './appComponent';
-import Todos from './todos';
-import NotFound from './notFound';
+import storeWrapper from './storeWrapper';
+import TodoStore from './todoStore';
+import { init } from './actions';
 
 import '../sass/app.scss';
 
-render(
-  (
-    <Router>
-      <Route path="/" component={AppComponent}>
-        <IndexRoute component={Todos} />
-        <Route path="*" component={NotFound} />
-      </Route>
-    </Router>
-  ),
-  document.querySelector('#app')
-);
+class App extends React.Component {
+
+  componentWillMount() {
+    init();
+  }
+
+  render() {
+
+    return (
+      <div className="row">
+        <div className="col-sm-12">
+          <h1>Todos</h1>
+          {React.cloneElement(this.props.children, {
+            todos: this.props.todos
+          })}
+        </div>
+      </div>
+    );
+  }
+
+}
+
+function getStateFromStores() {
+  return {
+    todos: TodoStore.getAll()
+  };
+}
+
+export default storeWrapper(App, [TodoStore], getStateFromStores);

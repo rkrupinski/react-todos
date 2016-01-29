@@ -28,9 +28,7 @@ const TodoStore = Object.assign({}, EventEmitter.prototype, {
 
 });
 
-TodoStore.dispatchToken = Dispatcher.register(function (payload) {
-  const { action } = payload;
-
+TodoStore.dispatchToken = Dispatcher.register(function (action) {
   switch (action.actionType) {
     case Constants.TODOS_FETCH:
       _todos = _todos.push(...action.response.body.map(item =>

@@ -5,4 +5,8 @@ export default keymirror({
   TODO_CREATE: null,
   TODO_UPDATE: null,
   TODO_REMOVE: null,
+
+  TODOS_ALL: null,
+  TODOS_PENDING: null,
+  TODOS_COMPLETED: null,
 });

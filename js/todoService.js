@@ -7,21 +7,21 @@ const API_URL = 'http://127.0.0.1:3000/todos';
 const TIMEOUT = 5000;
 
 function dispatch(actionType, response, params) {
-    const action = { actionType, response, params };
+  const action = { actionType, response, params };
 
-    Dispatcher.handleApiAction(action);
+  Dispatcher.dispatch(action);
 }
 
 function createResponseHandler(type, params = {}) {
   return function (err, res) {
-    if (err && err.timeout === TIMEOUT) {
-      console.log('timeout', ...arguments);
-      dispatch(type, { /* TODO */ }, params);
-    } else if (!res.ok) {
-      console.log('error', ...arguments);
-      dispatch(type, { /* TODO */ }, params);
-    } else {
-      dispatch(type, res, params);
+    switch (true) {
+      case err && err.timeout:
+      case !res.ok:
+        // TODO
+        console.log('failed', ...arguments);
+        break;
+      default:
+        dispatch(type, res, params);
     }
   };
 }

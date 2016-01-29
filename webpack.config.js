@@ -10,7 +10,7 @@ var dir_html = path.resolve(__dirname, 'html');
 var dir_build = path.resolve(__dirname, 'build');
 
 module.exports = {
-  entry: path.resolve(dir_js, 'app.js'),
+  entry: path.resolve(dir_js, 'index.js'),
   output: {
     path: dir_build,
     filename: '[hash:6].app.js'
